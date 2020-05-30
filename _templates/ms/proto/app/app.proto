@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package zepto.ms.hello;
+option go_package = "proto/app";
+
+message Hello {
+    string description = 2;
+}
+
+message HelloRequest {
+    string text = 1;
+}
+
+message HelloResponse {
+    string result = 1;
+}
+service HelloApp {
+    rpc Hello(HelloRequest) returns (HelloResponse) {}
+}

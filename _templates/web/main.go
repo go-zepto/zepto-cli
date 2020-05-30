@@ -21,11 +21,5 @@ func main() {
 	// Setup HTTP Server
 	z.SetupHTTP("0.0.0.0:8000", a)
 
-	//// Setup Broker Provider (Google Pub/Sub)
-	//z.SetupBroker(gcp.NewBroker(
-	//	gcp.ProjectID("slints-usa"),
-	//	gcp.TopicPrefix("dev.movies."),
-	//))
-
 	z.Start()
 }

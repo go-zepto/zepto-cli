@@ -52,6 +52,26 @@ func ExecuteWeb(args []string) {
 	color.Green("Finished! Your project is ready.");
 }
 
+func ExecuteMs(args []string) {
+	s := spinner.New(spinner.CharSets[9], 100*time.Millisecond)
+	s.Start()
+	fmt.Println("Creating ms project...")
+	projectDir := "./" + path.Base(args[1])
+	err := zeptocli.PkgerCopyDir("/_templates/ms", projectDir)
+	if err != nil {
+		panic(err)
+	}
+	replaceFunc := func(c string) string {
+		return strings.Replace(c, DEFAULT_TMPL_MODULE_PATH, args[1], -1)
+	}
+	err = filepath.Walk(projectDir, ReplaceWalk(projectDir, replaceFunc))
+	if err != nil {
+		panic(err)
+	}
+	s.Stop()
+	color.Green("Finished! Your project is ready.");
+}
+
 var NewCmd = &cobra.Command{
 	Use:   "new [web|ms] [name]",
 	Short: "Create a new zepto project",
@@ -61,7 +81,7 @@ var NewCmd = &cobra.Command{
 		if args[0] == "web" {
 			ExecuteWeb(args)
 		} else if args[0] == "ms" {
-			fmt.Println("Not implemented (ms)")
+			ExecuteMs(args)
 		} else {
 			fmt.Println("Invalid project type. You should select ms or web")
 		}

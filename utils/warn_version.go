@@ -13,7 +13,6 @@ func WarnVersion() {
         Owner: "go-zepto",
         Repository: "zepto-cli",
     }
-
     res, _ := latest.Check(githubTag, zeptocli.VERSION)
     if res != nil && res.Outdated {
         color.Yellow("A new zepto-cli version (%s) is available.\n", res.Current)
