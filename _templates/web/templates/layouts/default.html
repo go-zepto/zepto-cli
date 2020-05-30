@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="../../public/favicon.png" />
+  <title>
+    {% block title %}Hello, World{% endblock %}
+  </title>
+</head>
+<body>
+
+  <div class="topbar">
+    <img class="logo" src="/public/images/logo.png" />
+  </div>
+
+  {% block body %}
+    Default body
+  {% endblock %}
+
+  {# Scripts and Styles generated from webpack #}
+  {% asset "app.css" %}
+  {% asset "vendor.js" %}
+  {% asset "app.js" %}
+</body>
+</html>
