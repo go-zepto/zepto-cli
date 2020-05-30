@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"github.com/go-zepto/zepto-cli/utils"
 	"github.com/spf13/cobra"
+	"os"
+	"os/exec"
 	"path"
 	"path/filepath"
 	"runtime"
@@ -32,6 +34,12 @@ func ExecuteWeb(args []string) {
 	if err != nil {
 		panic(err)
 	}
+	fmt.Println("Installing NPM libraries...")
+	command := exec.Command("npm", "install")
+	command.Dir = "./" + filename
+	command.Stdout = os.Stdout
+	command.Stderr = os.Stderr
+	command.Start()
 }
 
 var NewCmd = &cobra.Command{
