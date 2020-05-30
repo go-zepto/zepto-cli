@@ -15,7 +15,7 @@ func main() {
 	// Create web app
 	a := z.NewWeb()
 
-	// Movies
+	// Routes
 	a.GET("/", controllers.HelloIndex)
 
 	// Setup HTTP Server

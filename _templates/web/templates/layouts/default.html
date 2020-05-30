@@ -7,6 +7,7 @@
   <title>
     {% block title %}Hello, World{% endblock %}
   </title>
+  {% asset "app.css" %}
 </head>
 <body>
 
@@ -18,8 +19,6 @@
     Default body
   {% endblock %}
 
-  {# Scripts and Styles generated from webpack #}
-  {% asset "app.css" %}
   {% asset "vendor.js" %}
   {% asset "app.js" %}
 </body>
