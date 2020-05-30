@@ -23,7 +23,6 @@ func PkgerCopyFile(source string, dest string) (err error) {
     defer destfile.Close()
 
     _, err = io.Copy(destfile, sourcefile)
-    fmt.Println(sourcefile.Path())
     if err == nil {
         sourceinfo, err := pkger.Stat(source)
         if err != nil {
