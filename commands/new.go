@@ -2,27 +2,31 @@ package commands
 
 import (
 	"fmt"
-	"github.com/go-zepto/zepto-cli/utils"
+	zeptocli "github.com/go-zepto/zepto-cli"
 	"github.com/spf13/cobra"
 	"os"
 	"os/exec"
 	"path"
 	"path/filepath"
-	"runtime"
 	"strings"
 )
 
 var DEFAULT_TMPL_MODULE_PATH = "github.com/go-zepto/templates/default"
 
-func getTemplatePath() string {
-	_, f, _, _ := runtime.Caller(0)
-	fp := path.Join(path.Dir(f), "./../templates/web")
-	return fp
+
+func NpmInstall(dir string) {
+	fmt.Println("Installing NPM libraries...")
+	command := exec.Command("npm", "--silent" +
+		"", "install")
+	command.Dir = dir
+	command.Stdout = os.Stdout
+	command.Stderr = os.Stderr
+	command.Start()
 }
 
 func ExecuteWeb(args []string) {
-	filename := path.Base(args[1])
-	err := utils.PkgerCopyDir(getTemplatePath(), "./" + filename)
+	projectDir := "./" + path.Base(args[1])
+	err := zeptocli.PkgerCopyDir("/_templates/web", projectDir)
 	if err != nil {
 		panic(err)
 	}
@@ -30,16 +34,11 @@ func ExecuteWeb(args []string) {
 		return strings.Replace(c, DEFAULT_TMPL_MODULE_PATH, args[1], -1)
 	}
 
-	err = filepath.Walk("./" + filename, ReplaceWalk("./" + filename, replaceFunc))
+	err = filepath.Walk(projectDir, ReplaceWalk(projectDir, replaceFunc))
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("Installing NPM libraries...")
-	command := exec.Command("npm", "install")
-	command.Dir = "./" + filename
-	command.Stdout = os.Stdout
-	command.Stderr = os.Stderr
-	command.Start()
+	NpmInstall(projectDir)
 }
 
 var NewCmd = &cobra.Command{
