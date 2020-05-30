@@ -16,7 +16,7 @@ var DEFAULT_TMPL_MODULE_PATH = "github.com/go-zepto/templates/default"
 
 func getTemplatePath() string {
 	_, f, _, _ := runtime.Caller(0)
-	fp := path.Join(path.Dir(f), "./../_templates/web")
+	fp := path.Join(path.Dir(f), "./../templates/web")
 	return fp
 }
 
