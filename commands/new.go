@@ -2,17 +2,17 @@ package commands
 
 import (
 	"fmt"
+	"github.com/briandowns/spinner"
 	"github.com/fatih/color"
 	zeptocli "github.com/go-zepto/zepto-cli"
+	"github.com/go-zepto/zepto-cli/utils"
 	"github.com/spf13/cobra"
 	"os"
 	"os/exec"
 	"path"
 	"path/filepath"
 	"strings"
-	"github.com/briandowns/spinner"
 	"time"
-	"github.com/tcnksm/go-latest"
 )
 
 var DEFAULT_TMPL_MODULE_PATH = "github.com/go-zepto/templates/default"
@@ -57,19 +57,7 @@ var NewCmd = &cobra.Command{
 	Short: "Create a new zepto project",
 	Args: cobra.MinimumNArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
-
-		githubTag := &latest.GithubTag{
-			Owner: "go-zepto",
-			Repository: "zepto-cli",
-		}
-
-		res, _ := latest.Check(githubTag, zeptocli.VERSION)
-		if res != nil && res.Outdated {
-			fmt.Printf("%s is not latest. Please, consider upgrade to %s:\n go get -u github.com/go-zepto/zepto-cli/cmd/zepto", zeptocli.VERSION, res.Current)
-		}
-
-
-
+		utils.WarnVersion()
 		if args[0] == "web" {
 			ExecuteWeb(args)
 		} else if args[0] == "ms" {
