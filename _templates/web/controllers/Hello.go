@@ -4,6 +4,6 @@ import (
     "github.com/go-zepto/zepto/web"
 )
 
-func HelloIndex(ctx web.Context) {
-	ctx.Render("pages/index")
+func HelloIndex(ctx web.Context) error {
+	return ctx.Render("pages/index")
 }

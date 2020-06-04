@@ -16,7 +16,7 @@ func main() {
 	a := z.NewWeb()
 
 	// Routes
-	a.GET("/", controllers.HelloIndex)
+	a.Get("/", controllers.HelloIndex)
 
 	// Setup HTTP Server
 	z.SetupHTTP("0.0.0.0:8000", a)
