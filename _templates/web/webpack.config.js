@@ -2,7 +2,7 @@
 
 var path = require('path');
 var webpack = require('webpack');
-var ManifestPlugin = require('webpack-manifest-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 var CompressionPlugin = require("compression-webpack-plugin");
 
@@ -101,7 +101,7 @@ var config = {
             }
         ),
         new CleanUpExtractCssChunks(),
-        new ManifestPlugin({
+        new WebpackManifestPlugin({
             writeToFileEmit: true,
             publicPath: production ? "/public/build/" : 'http://' + host + ':' + devServerPort + '/public/build/',
         }),
