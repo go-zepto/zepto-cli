@@ -63,11 +63,20 @@ func ExecuteWeb(templates embed.FS, args []string) {
 	utils.ReplaceTextOnFile(path.Join(projectDir, "Dockerfile"), DEFAULT_DOCKER_GO_ZEPTO_PATH, DEFAULT_DOCKER_GO_ZEPTO_PATH+"@v"+zeptocli.VERSION)
 	fmt.Println("Preparing go mod...")
 	s.Start()
-	// Renaming go mod since it can't be embed
+	// Renaming files which can't be embed
 	err = os.Rename(path.Join(projectDir, "go.mod_"), path.Join(projectDir, "go.mod"))
 	if err != nil {
 		panic(err)
 	}
+	err = os.Rename(path.Join(projectDir, "gitignore"), path.Join(projectDir, ".gitignore"))
+	if err != nil {
+		panic(err)
+	}
+	err = os.Rename(path.Join(projectDir, "dockerignore"), path.Join(projectDir, ".dockerignore"))
+	if err != nil {
+		panic(err)
+	}
+	// Run Go Mod Tidy
 	GoModTidy(projectDir)
 	s.Stop()
 	fmt.Println("Installing npm packages...")
