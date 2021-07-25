@@ -18,7 +18,7 @@ import (
 func NpmBuild() {
 	command := exec.Command("npm", "run", "build")
 	command.Stderr = os.Stderr
-	// command.Stdout = os.Stdout
+	command.Stdout = os.Stdout
 	err := command.Run()
 	if err != nil {
 		panic(err)
