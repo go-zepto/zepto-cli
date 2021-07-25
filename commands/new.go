@@ -12,11 +12,13 @@ import (
 
 	"github.com/briandowns/spinner"
 	"github.com/fatih/color"
+	zeptocli "github.com/go-zepto/zepto-cli"
 	"github.com/go-zepto/zepto-cli/utils"
 	"github.com/spf13/cobra"
 )
 
 var DEFAULT_TMPL_MODULE_PATH = "github.com/go-zepto/templates/default"
+var DEFAULT_DOCKER_GO_ZEPTO_PATH = "github.com/go-zepto/zepto-cli/cmd/zepto"
 
 var projectName string
 
@@ -42,8 +44,8 @@ func GoModTidy(dir string) {
 
 func ExecuteWeb(templates embed.FS, args []string) {
 	s := spinner.New(spinner.CharSets[9], 100*time.Millisecond)
-	s.Start()
 	fmt.Println("Creating web project...")
+	s.Start()
 	projectName := args[0]
 	projectDir := "./" + projectName
 
@@ -54,11 +56,11 @@ func ExecuteWeb(templates embed.FS, args []string) {
 	replaceFunc := func(c string) string {
 		return strings.Replace(c, DEFAULT_TMPL_MODULE_PATH, projectName, -1)
 	}
-	s.Stop()
 	err = filepath.Walk(projectDir, ReplaceWalk(projectDir, replaceFunc))
 	if err != nil {
 		panic(err)
 	}
+	utils.ReplaceTextOnFile(path.Join(projectDir, "Dockerfile"), DEFAULT_DOCKER_GO_ZEPTO_PATH, DEFAULT_DOCKER_GO_ZEPTO_PATH+"@"+zeptocli.VERSION)
 	fmt.Println("Preparing go mod...")
 	s.Start()
 	// Renaming go mod since it can't be embed
