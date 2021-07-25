@@ -1,17 +1,21 @@
 package main
 
 import (
+	"embed"
 	"fmt"
+	"os"
+
 	"github.com/go-zepto/zepto-cli/commands"
 	"github.com/spf13/cobra"
-	"os"
 )
 
+//go:embed _templates/*
+var templates embed.FS
 
 var rootCmd = &cobra.Command{
 	Use:   "zepto",
-	Short: "Zepto is a lightweight web & microservices framework",
-	Long: "Zepto is a lightweight framework for the development of microservices & web services in golang.\nComplete documentation is available at https://go-zepto.github.io/zepto",
+	Short: "Zepto is a lightweight web framework",
+	Long:  "Zepto is a lightweight web  framework written in golang.\nComplete documentation is available at https://go-zepto.github.io/zepto",
 }
 
 func Execute() {
@@ -21,9 +25,8 @@ func Execute() {
 	}
 }
 
-
 func main() {
-	rootCmd.AddCommand(commands.NewCmd)
+	rootCmd.AddCommand(commands.NewCreateProjectCmd(templates))
 	err := rootCmd.Execute()
 	if err != nil {
 		panic(err)
