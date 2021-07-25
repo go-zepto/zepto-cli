@@ -1,8 +1,10 @@
 FROM golang:1.16.6-alpine3.14
 WORKDIR /app
 COPY . .
-RUN go get -u github.com/go-zepto/zepto-cli/cmd/zepto
-RUN apk update && apk add --update alpine-sdk make npm python3 && npm install && zepto build
+RUN apk update && \
+    apk add --update git alpine-sdk make npm python3 && \
+    go get -u github.com/go-zepto/zepto-cli/cmd/zepto && \
+    npm install && zepto build
 
 FROM alpine:3.11
 WORKDIR /app
