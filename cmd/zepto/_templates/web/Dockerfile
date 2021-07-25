@@ -12,6 +12,7 @@ RUN apk update && \
     go get -u github.com/go-zepto/zepto-cli/cmd/zepto && \
     export PATH=$PATH:/usr/local/go/bin && \
     npm install && \
+    npm rebuild node-sass && \
     go mod tidy && \
     zepto build
 

@@ -18,7 +18,7 @@
     "webpack-manifest-plugin": "^3.1.1"
   },
   "scripts": {
-    "build": "webpack --config webpack.config.js",
+    "build": "webpack --config webpack.config.js --bail",
     "start": "webpack-dev-server --config webpack.config.js --hot --inline"
   },
   "author": "",
