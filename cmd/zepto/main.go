@@ -28,6 +28,7 @@ func Execute() {
 func main() {
 	rootCmd.AddCommand(commands.NewCreateProjectCmd(templates))
 	rootCmd.AddCommand(commands.NewDevCmd())
+	rootCmd.AddCommand(commands.NewBuildCmd())
 	err := rootCmd.Execute()
 	if err != nil {
 		panic(err)
