@@ -22,3 +22,9 @@ jobs:
 
     - name: Build
       run: go build -v cmd/zepto/main.go
+
+    - name: Install Command Line
+      run: go get ./cmd/zepto
+
+    - name: Run Zepto CLI - Create Project
+      run: zepto
