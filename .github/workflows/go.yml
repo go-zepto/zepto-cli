@@ -32,11 +32,11 @@ jobs:
     - name: Run Zepto CLI - Create project
       run: zepto new blog
 
-    # - name: Cache register
-    #   uses: actions/cache@v2
-    #   with:
-    #     path: /tmp/.buildx-cache
-    #     key: ${{ runner.os }}-buildx-${{ hashFiles('blog/**/Dockerfile') }}
+    - name: Cache register
+      uses: actions/cache@v2
+      with:
+        path: /tmp/.buildx-cache
+        key: ${{ runner.os }}-buildx-${{ hashFiles('blog/**/Dockerfile') }}
 
     - name: Docker build created zepto project
       uses: docker/build-push-action@v2
