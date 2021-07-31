@@ -50,4 +50,12 @@ jobs:
         cache-to: type=local,dest=/tmp/.buildx-cache
 
     - name: Run builded docker project
-      run: docker run -e SESSION_SECRET=app-test zepto_test_blog:latest
+      run: docker run -d -e SESSION_SECRET=app-test zepto_test_blog:latest
+
+    - name: HTTP Health Check
+      uses: cygnetdigital/wait_for_response@v2.0.0
+      with:
+        url: 'http://localhost:8000/health'
+        responseCode: '200'
+        timeout: 2000
+        interval: 500
