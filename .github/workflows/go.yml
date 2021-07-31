@@ -26,5 +26,5 @@ jobs:
     - name: Install Command Line
       run: go get ./cmd/zepto
 
-    - name: Run Zepto CLI - Create Project
-      run: zepto
+    - name: Run Zepto CLI - Create project
+      run: zepto new blog
