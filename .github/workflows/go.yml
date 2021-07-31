@@ -40,8 +40,6 @@ jobs:
         load: true
         push: false
         tags: zepto_test_blog:latest
-        cache-from: type=local,src=/tmp/.buildx-cache
-        cache-to: type=local,dest=/tmp/.buildx-cache
 
     - name: Run builded docker project
       run: docker run -d -e SESSION_SECRET=app-test -p 8000:8000 zepto_test_blog:latest
