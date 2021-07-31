@@ -50,4 +50,4 @@ jobs:
         cache-to: type=local,dest=/tmp/.buildx-cache
 
     - name: Run builded docker project
-      run: docker run zepto_test_blog:latest
+      run: docker run -e SESSION_SECRET=app-test zepto_test_blog:latest
