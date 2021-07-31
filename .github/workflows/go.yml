@@ -50,4 +50,4 @@ jobs:
         cache-to: type=local,dest=/tmp/.buildx-cache
 
     - name: Run builded docker project
-      run: docker run -v "$(pwd):/app" zepto_test_blog:latest
+      run: docker run zepto_test_blog:latest
