@@ -6,6 +6,7 @@ import (
 	"os"
 
 	"github.com/go-zepto/zepto-cli/commands"
+	"github.com/go-zepto/zepto-cli/commands/db"
 	"github.com/spf13/cobra"
 )
 
@@ -29,6 +30,7 @@ func main() {
 	rootCmd.AddCommand(commands.NewCreateProjectCmd(templates))
 	rootCmd.AddCommand(commands.NewDevCmd())
 	rootCmd.AddCommand(commands.NewBuildCmd())
+	rootCmd.AddCommand(db.NewDBCmd())
 	err := rootCmd.Execute()
 	if err != nil {
 		panic(err)
