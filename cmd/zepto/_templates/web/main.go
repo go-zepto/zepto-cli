@@ -7,19 +7,10 @@ import (
 
 func main() {
 	// Create Zepto
-	z := zepto.NewZepto(
-		zepto.Name("web"),
-		zepto.Version("latest"),
-	)
-
-	// Create web app
-	a := z.NewWeb()
+	z := zepto.NewZepto()
 
 	// Routes
-	a.Get("/", controllers.HelloIndex)
-
-	// Setup HTTP Server
-	z.SetupHTTP("0.0.0.0:8000", a)
+	z.Get("/", controllers.HelloIndex)
 
 	z.Start()
 }

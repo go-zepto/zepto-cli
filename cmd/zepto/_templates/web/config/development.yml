@@ -1,0 +1,13 @@
+app:
+  name: my-project
+  version: 1.0.0
+
+server:
+  port: 8000
+
+db:
+  adapter: sqlite
+  database: db/development.sqlite3
+
+logger:
+  level: "debug"
