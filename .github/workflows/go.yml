@@ -49,5 +49,5 @@ jobs:
       with:
         url: 'http://localhost:8000/health'
         responseCode: '200'
-        timeout: 2000
+        timeout: 10000
         interval: 500
