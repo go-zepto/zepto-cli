@@ -1,3 +1,3 @@
 package zeptocli
 
-var VERSION = "1.0.11"
+var VERSION = "1.0.12"
