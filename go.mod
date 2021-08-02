@@ -7,7 +7,7 @@ require (
 	github.com/creack/pty v1.1.14
 	github.com/fatih/color v1.12.0
 	github.com/fsnotify/fsnotify v1.4.9
-	github.com/go-zepto/zepto v1.0.0
+	github.com/go-zepto/zepto v1.0.1
 	github.com/golang-migrate/migrate/v4 v4.14.1
 	github.com/otiai10/copy v1.6.0
 	github.com/pelletier/go-toml v1.9.3

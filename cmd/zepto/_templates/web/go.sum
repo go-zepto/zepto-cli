@@ -171,8 +171,8 @@ github.com/go-webpack/pongo2 v1.0.0 h1:I3wSDsLcR8DtafpDq+AAuy6z4f1m6qum7gHYtU9wV
 github.com/go-webpack/pongo2 v1.0.0/go.mod h1:XozVI7HhuXKVyfRgh42NxMdvrI1D6vjCmz26aeEC1as=
 github.com/go-webpack/webpack v1.5.0 h1:No6zPXZk00JUlW5S1j3G6FqoWVy7PJ4zElnDIeWoypM=
 github.com/go-webpack/webpack v1.5.0/go.mod h1:wRQfNvPzxky/Y2JxiKRNrxYHc5+cQXGgpkTt4dPDK+A=
-github.com/go-zepto/zepto v1.0.0 h1:68TXIU7KVcbJgzL9voKJ51SXEh2vcRCrv5359tLHdxE=
-github.com/go-zepto/zepto v1.0.0/go.mod h1:Z4IrnR9izhmG5W2+fIfiGs99BR36q+AXGFIHsTEVnrA=
+github.com/go-zepto/zepto v1.0.1 h1:dU+MTYu1MCeka3KEXzt76scAaMlQ7VbdMU+sV4Upvy4=
+github.com/go-zepto/zepto v1.0.1/go.mod h1:Z4IrnR9izhmG5W2+fIfiGs99BR36q+AXGFIHsTEVnrA=
 github.com/gobuffalo/here v0.6.0/go.mod h1:wAG085dHOYqUpf+Ap+WOdrPTp5IYcDAs/x7PLa8Y5fM=
 github.com/gocql/gocql v0.0.0-20190301043612-f6df8288f9b4/go.mod h1:4Fw1eo5iaEhDUs8XyuhSVCVy52Jq3L+/3GJgYkwc+/0=
 github.com/godbus/dbus/v5 v5.0.4/go.mod h1:xhWf0FNVPg57R7Z0UbKHbJfkEywrmjJnf7w5xrFpKfA=
