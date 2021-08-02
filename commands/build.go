@@ -25,7 +25,13 @@ func NpmBuild() {
 }
 
 func GoBuild() {
-	cmd := []string{"build", "-o", "build/app"}
+	cmd := []string{
+		"build",
+		"-ldflags",
+		"-X github.com/go-zepto/zepto/flags.BuildMode=production",
+		"-o",
+		"build/app",
+	}
 	matches, err := filepath.Glob("*.go")
 	if err != nil {
 		panic(err)
@@ -47,6 +53,10 @@ func CopyResources() {
 		panic(err)
 	}
 	err = copy.Copy("public", "build/public")
+	if err != nil {
+		panic(err)
+	}
+	err = copy.Copy("config", "build/config")
 	if err != nil {
 		panic(err)
 	}

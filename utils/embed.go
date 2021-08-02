@@ -51,7 +51,7 @@ func CopyDirFromEmbed(embedFs embed.FS, src string, dest string) error {
 
 			}
 
-			err = ioutil.WriteFile(dest+"/"+f.Name(), content, 0755)
+			err = ioutil.WriteFile(dest+"/"+f.Name(), content, 0644)
 			if err != nil {
 				return err
 

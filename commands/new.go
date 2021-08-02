@@ -53,6 +53,9 @@ func ExecuteWeb(templates embed.FS, args []string) {
 	if err != nil {
 		panic(err)
 	}
+	if err = os.MkdirAll(projectDir+"/db/migrate", 0755); err != nil {
+		panic(err)
+	}
 	replaceFunc := func(c string) string {
 		return strings.Replace(c, DEFAULT_TMPL_MODULE_PATH, projectName, -1)
 	}

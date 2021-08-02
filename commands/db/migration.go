@@ -38,7 +38,7 @@ func NewMigrationCmd() *cobra.Command {
 		RunE: func(cmd *cobra.Command, args []string) error {
 			m, err := migrate.NewMigrate(migrate.Options{})
 			if err != nil {
-				return nil
+				return err
 			}
 			return m.CreateMigrationFiles(migrate.CreateMigrationFilesOptions{
 				Name: args[0],
