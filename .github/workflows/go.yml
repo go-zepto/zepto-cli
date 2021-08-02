@@ -42,7 +42,7 @@ jobs:
         tags: zepto_test_blog:latest
 
     - name: Run builded docker project
-      run: docker run -d -e ZEPTO_APP_SESSION_SECRET=app-test -p 8000:8000 zepto_test_blog:latest
+      run: docker run -d -e ZEPTO_DB_DATABASE=ci.sqlite3 ZEPTO_APP_SESSION_SECRET=app-test -p 8000:8000 zepto_test_blog:latest
 
     - name: HTTP Health Check
       uses: cygnetdigital/wait_for_response@v2.0.0
