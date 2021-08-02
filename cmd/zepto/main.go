@@ -3,8 +3,10 @@ package main
 import (
 	"embed"
 	"fmt"
+	"log"
 	"os"
 
+	"github.com/fatih/color"
 	"github.com/go-zepto/zepto-cli/commands"
 	"github.com/go-zepto/zepto-cli/commands/db"
 	"github.com/spf13/cobra"
@@ -33,6 +35,6 @@ func main() {
 	rootCmd.AddCommand(db.NewDBCmd())
 	err := rootCmd.Execute()
 	if err != nil {
-		panic(err)
+		log.Fatal(color.RedString(err.Error()))
 	}
 }

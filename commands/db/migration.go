@@ -17,6 +17,11 @@ func handleRunErr(err error) error {
 		color.Yellow("Migration was executed, but there were no changes.")
 		return nil
 	}
+	if errors.Is(err, gomigrate.ErrNilVersion) {
+		color.Yellow("No migrations have been run yet. Please run:")
+		fmt.Printf("\n  $ zepto db migration up\n\n")
+		return nil
+	}
 	color.Green("Migration executed successfully")
 	return err
 }
@@ -86,7 +91,7 @@ func NewMigrationCmd() *cobra.Command {
 			}
 			s, err := m.Status()
 			if err != nil {
-				return err
+				return handleRunErr(err)
 			}
 			fmt.Printf("Current migration: %s\n", color.CyanString(s.CurrentVersionFile))
 			if s.Dirty {
