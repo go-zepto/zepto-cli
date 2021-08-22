@@ -46,8 +46,9 @@ func ExecuteWeb(templates embed.FS, args []string) {
 	s := spinner.New(spinner.CharSets[9], 100*time.Millisecond)
 	fmt.Println("Creating web project...")
 	s.Start()
-	projectName := args[0]
-	projectDir := "./" + projectName
+	projectRepoPath := args[0]
+	folderName := filepath.Base(projectRepoPath)
+	projectDir := "./" + folderName
 
 	err := utils.CopyDirFromEmbed(templates, "_templates/web", projectDir)
 	if err != nil {
@@ -57,7 +58,7 @@ func ExecuteWeb(templates embed.FS, args []string) {
 		panic(err)
 	}
 	replaceFunc := func(c string) string {
-		return strings.Replace(c, DEFAULT_TMPL_MODULE_PATH, projectName, -1)
+		return strings.Replace(c, DEFAULT_TMPL_MODULE_PATH, projectRepoPath, -1)
 	}
 	err = filepath.Walk(projectDir, ReplaceWalk(projectDir, replaceFunc))
 	if err != nil {

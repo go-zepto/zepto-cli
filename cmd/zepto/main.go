@@ -17,8 +17,8 @@ var templates embed.FS
 
 var rootCmd = &cobra.Command{
 	Use:   "zepto",
-	Short: "Zepto is a lightweight web framework",
-	Long:  "Zepto is a lightweight web  framework written in golang.\nComplete documentation is available at https://go-zepto.github.io/zepto",
+	Short: "Zepto is a lightweight golang web framework",
+	Long:  "Zepto is a lightweight golang web framework.\nComplete documentation is available at https://go-zepto.com/docs",
 }
 
 func Execute() {
