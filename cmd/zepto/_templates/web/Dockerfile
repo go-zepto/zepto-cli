@@ -8,7 +8,7 @@ ENV PATH /go/bin:$PATH
 COPY . .
 ## Install dependencies and build
 RUN apk update && \
-    apk add --update go=1.16.5-r0 git alpine-sdk make python3 && \
+    apk add --update go git alpine-sdk make python3 && \
     go get -u github.com/go-zepto/zepto-cli/cmd/zepto && \
     export PATH=$PATH:/usr/local/go/bin && \
     npm install && \
