@@ -3,6 +3,8 @@ package commands
 import (
 	"io/ioutil"
 	"log"
+	"path/filepath"
+	"runtime"
 	"strings"
 
 	"github.com/fatih/color"
@@ -21,7 +23,7 @@ func isZeptoProject() bool {
 }
 
 func watch() {
-	r, err := runner.NewEngineFromConfig(&runner.Config{
+	cfg := &runner.Config{
 		Root:        ".",
 		TmpDir:      "tmp",
 		TestDataDir: "testdata",
@@ -33,7 +35,14 @@ func watch() {
 			ExcludeRegex: []string{"_test.go"},
 			StopOnError:  true,
 		},
-	}, false)
+	}
+	if runtime.GOOS == runner.PlatformWindows {
+		cfg.Build.Bin = "tmp\\main"
+		if files, err := filepath.Glob("*.go"); err == nil {
+			cfg.Build.Cmd = "go build -o ./tmp/main.exe " + strings.Join(files, " ")
+		}
+	}
+	r, err := runner.NewEngineFromConfig(cfg, false)
 	r.Run()
 	if err != nil {
 		panic(err)
